@@ -1,0 +1,12 @@
+select case
+    when G.grade > 7 then S.name
+    else NULL
+    end AS names,
+    G.grade,
+    S.marks
+from students S
+    join grades G
+    ON S.marks between G.min_mark and G.max_mark
+order by G.grade desc,
+    names asc,
+    S.marks asc;
