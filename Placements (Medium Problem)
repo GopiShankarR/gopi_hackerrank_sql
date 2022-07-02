@@ -1,0 +1,5 @@
+select temp1.s_name
+from (select s.id as s_id, s.name as s_name, p.salary as p_salary from students s join packages p on s.id = p.id) temp1 
+join (select f.id f_id, f.friend_id as f_friendid, pp.salary as pp_salary from friends f join packages pp on f.friend_id = pp.id) temp2 on temp1.s_id = temp2.f_id
+and temp1.p_salary < temp2.pp_salary
+order by temp2.pp_salary asc;
