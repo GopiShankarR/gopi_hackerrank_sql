@@ -1,0 +1,11 @@
+/*
+Enter your query here.
+*/
+select concat(name, '(', substr(occupation, 1, 1), ')') as nameAlias
+from occupations
+order by nameAlias;
+
+select concat('There are a total of ', count(occupation), ' ', lower(occupation),'s.')
+from occupations
+group by occupation
+order by count(occupation), occupation;
