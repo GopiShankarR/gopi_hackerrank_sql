@@ -1,0 +1,9 @@
+/*
+Enter your query here.
+*/
+select max(case when occupation = 'Doctor' then name end) as Doctor,
+       max(case when occupation = 'Professor' then name end) as Professor,
+       max(case when occupation = 'Singer' then name end) as Singer,
+       max(case when occupation = 'Actor' then name end) as Actor
+from (select name, occupation, ROW_NUMBER() OVER (PARTITION BY occupation order by name) as row_num from occupations) as Temp
+group by row_num;
